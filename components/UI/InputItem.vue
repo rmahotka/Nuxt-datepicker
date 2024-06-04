@@ -1,15 +1,9 @@
-<script setup>
-// const model = defineModel();
-const props = defineProps(['modelValue']);
-const emit = defineEmits(['update:modelValue']);
+<script setup lang="ts">
+const model = defineModel();
 </script>
 
 <template>
-  <input
-    type="text"
-    :value="props.modelValue"
-    @input="emit('update:modelValue', $event.target.value)"
-  />
+  <input type="text" v-model="model" />
 </template>
 
 <style scoped>

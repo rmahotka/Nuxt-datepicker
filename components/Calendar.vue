@@ -1,11 +1,4 @@
 <script setup>
-import { ref } from "vue";
-import ButtonItem from "./UI/ButtonItem.vue";
-import MonthAndYear from "./MonthAndYear.vue";
-import WeekItem from "@/components/WeekItem.vue";
-import DayItem from "@/components/DayItem.vue";
-import Arrow from "@/assets/Arrow.vue";
-
 const props = defineProps({
   date: {
     type: Number,
@@ -39,13 +32,13 @@ const emit = defineEmits(["getDay"]);
 
 <template>
   <div class="widgest__block">
-    <ButtonItem @click="monthMinus(props.date)">
+    <UIButtonItem @click="monthMinus(props.date)">
       <Arrow />
-    </ButtonItem>
+    </UIButtonItem>
     <MonthAndYear :location="location" :date="newDate" />
-    <ButtonItem @click="monthPlus(props.date)">
+    <UIButtonItem @click="monthPlus(props.date)">
       <Arrow style="rotate: 180deg" />
-    </ButtonItem>
+    </UIButtonItem>
   </div>
   <div>
     <WeekItem :date="newDate" :location="props.location" />

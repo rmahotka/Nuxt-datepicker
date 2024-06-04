@@ -1,9 +1,4 @@
-<!-- <script setup>
-import Calendar from "@/components/Calendar.vue";
-import InputItem from "@/components/UI/InputItem.vue";
-
-import { computed, ref } from "vue";
-
+<script setup>
 const visible = ref(false);
 const inputDate = ref("");
 const location = ref(window.clientInformation.language);
@@ -42,7 +37,7 @@ const isSelected = computed(() => {
 <template>
   <div class="container">
     <div class="block">
-      <InputItem @click="useVisible" v-model="inputDate" />
+      <UIInputItem @click="useVisible" v-model="inputDate" />
       <Transition>
         <div class="block-calendar" v-if="visible">
           <Calendar
@@ -59,6 +54,7 @@ const isSelected = computed(() => {
 
 <style scoped>
 .container {
+  margin-top: 20px;
   height: 100vh;
   width: 100%;
   display: flex;
@@ -97,12 +93,4 @@ const isSelected = computed(() => {
 .v-leave-to {
   opacity: 0;
 }
-</style> -->
-
-<template>
-  <div>hello World</div>
-</template>
-
-<script setup></script>
-
-<style lang="scss" scoped></style>
+</style>

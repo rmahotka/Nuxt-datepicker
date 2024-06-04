@@ -1,6 +1,5 @@
 <script setup>
-import { computed } from "vue";
-import { getLastDayOfMonth } from "@/helpers";
+const { getLastDayOfMonth } = useDate();
 
 const props = defineProps({
   date: {
