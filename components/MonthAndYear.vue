@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   date: {
     type: Number,
@@ -11,10 +11,10 @@ const props = defineProps({
   },
 });
 
-const newMonthAndYear = computed(() => {
-  let newDate = new Date(props.date);
-  let objDate = {
-    month: newDate.toLocaleString(props.location, { month: "long" }),
+const newMonthAndYear: object = computed(() => {
+  let newDate: Date = new Date(props.date);
+  let objDate: { month: string; year: number } = {
+    month: newDate.toLocaleString(props.location, { month: 'long' }),
     year: newDate.getFullYear(),
   };
   return objDate;

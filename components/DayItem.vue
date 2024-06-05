@@ -1,4 +1,6 @@
-<script setup>
+<script setup lang="ts">
+import { IGetDay } from '~/types/';
+
 const { getLastDayOfMonth } = useDate();
 
 const props = defineProps({
@@ -12,16 +14,22 @@ const props = defineProps({
   },
 });
 
-const newMounthCountDay = computed(() => {
-  let date = new Date(props.date);
-  const countDays = getLastDayOfMonth(date.getFullYear(), date.getMonth());
-  const lastMonth = getLastDayOfMonth(date.getFullYear(), date.getMonth() - 1);
+const newMounthCountDay = computed((): object => {
+  let date: Date = new Date(props.date);
+  const countDays: number = getLastDayOfMonth(
+    date.getFullYear(),
+    date.getMonth()
+  );
+  const lastMonth: number = getLastDayOfMonth(
+    date.getFullYear(),
+    date.getMonth() - 1
+  );
 
   date.setDate(1);
-  const firstOfDayWeek = date.getDay();
+  const firstOfDayWeek: number = date.getDay();
 
-  let newMonth = [];
-  let weekDays = [];
+  let newMonth: object[] = [];
+  let weekDays: object[] = [];
 
   if (firstOfDayWeek) {
     for (let i = lastMonth; 0 < i; i--) {
@@ -54,11 +62,11 @@ const newMounthCountDay = computed(() => {
   return newMonth;
 });
 
-const todaysDay = (day) => {
+const todaysDay = (day: { d: number; m: number; y: number }): boolean => {
   let date = new Date();
-  let dayNow = date.getDate();
-  let monthNow = date.getMonth();
-  let yearNow = date.getFullYear();
+  let dayNow: number = date.getDate();
+  let monthNow: number = date.getMonth();
+  let yearNow: number = date.getFullYear();
   if (dayNow === day.d && monthNow === day.m && yearNow === day.y) {
     return true;
   }
@@ -67,10 +75,10 @@ const todaysDay = (day) => {
 };
 
 const getDate = (day) => {
-  emit("getDate", day);
+  emit('getDate', day);
 };
 
-const emit = defineEmits(["getDate"]);
+const emit = defineEmits(['getDate']);
 </script>
 
 <template>
@@ -129,3 +137,11 @@ const emit = defineEmits(["getDate"]);
   background-color: #ececec;
 }
 </style>
+
+function useDate(): { getLastDayOfMonth: any; } { throw new Error("Function not
+implemented."); } function useDate(): { getLastDayOfMonth: any; } { throw new
+Error("Function not implemented."); } function defineProps(arg0: { date: { type:
+NumberConstructor; require: boolean; default: number; }; isSelected: { type:
+BooleanConstructor; }; }) { throw new Error("Function not implemented."); }
+function defineEmits(arg0: string[]) { throw new Error("Function not
+implemented."); }
