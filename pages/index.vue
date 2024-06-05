@@ -1,4 +1,6 @@
 <script setup>
+import { ref, computed } from "vue";
+
 const visible = ref(false);
 const inputDate = ref("");
 const location = ref(window.clientInformation.language);

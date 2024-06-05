@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import { IGetDay } from '~/types/';
-
+<script setup>
 const { getLastDayOfMonth } = useDate();
 
 const props = defineProps({
@@ -14,22 +12,16 @@ const props = defineProps({
   },
 });
 
-const newMounthCountDay = computed((): object => {
-  let date: Date = new Date(props.date);
-  const countDays: number = getLastDayOfMonth(
-    date.getFullYear(),
-    date.getMonth()
-  );
-  const lastMonth: number = getLastDayOfMonth(
-    date.getFullYear(),
-    date.getMonth() - 1
-  );
+const newMounthCountDay = computed(() => {
+  let date = new Date(props.date);
+  const countDays = getLastDayOfMonth(date.getFullYear(), date.getMonth());
+  const lastMonth = getLastDayOfMonth(date.getFullYear(), date.getMonth() - 1);
 
   date.setDate(1);
-  const firstOfDayWeek: number = date.getDay();
+  const firstOfDayWeek = date.getDay();
 
-  let newMonth: object[] = [];
-  let weekDays: object[] = [];
+  let newMonth = [];
+  let weekDays = [];
 
   if (firstOfDayWeek) {
     for (let i = lastMonth; 0 < i; i--) {
@@ -62,11 +54,11 @@ const newMounthCountDay = computed((): object => {
   return newMonth;
 });
 
-const todaysDay = (day: { d: number; m: number; y: number }): boolean => {
+const todaysDay = (day) => {
   let date = new Date();
-  let dayNow: number = date.getDate();
-  let monthNow: number = date.getMonth();
-  let yearNow: number = date.getFullYear();
+  let dayNow = date.getDate();
+  let monthNow = date.getMonth();
+  let yearNow = date.getFullYear();
   if (dayNow === day.d && monthNow === day.m && yearNow === day.y) {
     return true;
   }
@@ -75,10 +67,10 @@ const todaysDay = (day: { d: number; m: number; y: number }): boolean => {
 };
 
 const getDate = (day) => {
-  emit('getDate', day);
+  emit("getDate", day);
 };
 
-const emit = defineEmits(['getDate']);
+const emit = defineEmits(["getDate"]);
 </script>
 
 <template>

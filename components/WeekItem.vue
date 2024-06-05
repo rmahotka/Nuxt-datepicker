@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 const { getWeekName } = useDate();
 
 defineProps({
@@ -12,7 +12,7 @@ defineProps({
   },
 });
 
-const dateItems: string[] = [
+const dateItems = [
   "05/06/2024",
   "05/07/2024",
   "05/08/2024",
